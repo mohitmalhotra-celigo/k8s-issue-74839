@@ -215,21 +215,24 @@ if minikube status >/dev/null 2>&1; then
     else
         print_warning "Existing minikube cluster detected. Deleting..."
         minikube delete
+        
         print_message "Starting minikube cluster with 3 nodes and Calico CNI..."
         minikube start --driver=podman --nodes=3 --cni=calico
+        print_message "Waiting for cluster to be ready..."
+        sleep 30
     fi
 fi
-
-
-print_message "Waiting for cluster to be ready..."
-sleep 30
 
 print_message "Building container image..."
 make image
 
 # fix to load image at all nodes
-print_message "Make image available at all nodes..."
-podman save k8s-issue-74839:latest | minikube image load --profile=minikube -
+print_message "Loading image to minikube..."
+sed -i '' 's#k8s-issue-74839:latest#localhost/k8s-issue-74839:latest#g' deploy.yaml
+sleep 1
+podman save localhost/k8s-issue-74839:latest | minikube image load -
+# Revert the change in deploy.yaml
+sed -i '' 's#localhost/k8s-issue-74839:latest#k8s-issue-74839:latest#g' deploy.yaml
 sleep 10
 
 print_message "Deploying to Kubernetes..."

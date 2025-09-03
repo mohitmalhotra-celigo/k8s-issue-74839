@@ -27,7 +27,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: boom-server
-        image: k8s-issue-74839:latest
+        image: localhost/k8s-issue-74839:latest
         ports:
         - containerPort: 9000
         imagePullPolicy: IfNotPresent
