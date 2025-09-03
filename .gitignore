@@ -1,1 +1,46 @@
-/k8s-issue-74839
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+.DS_Store
+Thumbs.db
+*.sublime-*
+.project
+.settings/
+
+# Go specific
+*.test
+*.cover
+*.coverprofile
+*.prof
+vendor/
+go.work
+go.work.sum
+go.mod
+go.sum
+
+# Build artifacts and binaries
+k8s-issue-74839
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+bin/
+dist/
+build/
+
+# Debug files
+debug
+debug.test
+*.pprof
+
+# Local development
+.local/
+.cache/
+*.tar
+*.tar.gz

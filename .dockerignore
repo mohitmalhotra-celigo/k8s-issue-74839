@@ -1,0 +1,135 @@
+# Git files
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Documentation
+*.md
+README*
+LICENSE*
+CHANGELOG*
+docs/
+
+# Kubernetes/Docker files
+*.yaml
+*.yml
+docker-compose*
+Dockerfile*
+.dockerignore
+deploy.yaml
+deployment.yaml
+service.yaml
+configmap.yaml
+secret.yaml
+
+# Scripts and configs  
+*.sh
+setup.sh
+# Makefile is needed for Docker build
+# Makefile
+# makefile
+.env*
+*.conf
+containers.conf
+
+# Build artifacts and binaries
+k8s-issue-74839
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+bin/
+dist/
+build/
+
+# Go specific
+*.test
+*.cover
+*.coverprofile
+*.prof
+vendor/
+go.work
+go.work.sum
+
+# Test files
+*_test.go
+test/
+tests/
+coverage/
+.nyc_output/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+.DS_Store
+Thumbs.db
+*.sublime-*
+.project
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.pid
+*.cache
+tmp/
+temp/
+logs/
+
+# Archive files
+*.tar
+*.tar.gz
+*.zip
+*.gz
+*.tgz
+*.bz2
+*.7z
+*.rar
+
+# Certificates and keys (security)
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+.ssh/
+
+# CI/CD
+.travis.yml
+.gitlab-ci.yml
+.circleci/
+.drone.yml
+Jenkinsfile
+azure-pipelines.yml
+.buildkite/
+
+# Package manager files (keep go.mod and go.sum)
+go.mod
+go.sum
+
+# Debug files
+debug
+debug.test
+*.pprof
+
+# Local development
+.local/
+.cache/
