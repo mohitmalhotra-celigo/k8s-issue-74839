@@ -65,5 +65,5 @@ spec:
   containers:
   - name: startup-script
     image: busybox:latest
-    command: ['sh', '-c', 'while true; do sleep 2; nc boom-server 9000 & done']
+    command: ['sh', '-c', 'while true; do sleep 2; echo "Attempting to connect"; nc boom-server 9000 & done']
     imagePullPolicy: IfNotPresent
