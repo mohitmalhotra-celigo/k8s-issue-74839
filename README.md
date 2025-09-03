@@ -1,11 +1,11 @@
 # Reproduction of k8s issue #74839
 
-## Howto
+## How to deploy
 
 1. Create a cluster with at least 2 nodes.
 1. Deploy the app.
 ```console
-kubectl create -f https://raw.githubusercontent.com/anfernee/k8s-issue-74839/master/deploy.yaml
+kubectl create -f deploy.yaml
 ```
 
 1. Check if the server crashed

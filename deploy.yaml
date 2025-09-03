@@ -27,7 +27,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: boom-server
-        image: anfernee/k8s-issue-74839
+        image: mohit/k8s-issue-74839:latest
         ports:
         - containerPort: 9000
 ---
@@ -63,6 +63,6 @@ spec:
         topologyKey: kubernetes.io/hostname
   containers:
   - name: startup-script
-    image: gcr.io/google-containers/startup-script:v1
-    command: ['bash', '-c', 'while true; do sleep 2; nc boom-server 9000& done']
+    image: busybox:latest
+    command: ['sh', '-c', 'while true; do sleep 2; nc boom-server 9000 & done']
     imagePullPolicy: IfNotPresent
