@@ -209,31 +209,30 @@ print_message ""
 
 # Check if minikube cluster exists and delete it if it does
 if minikube status >/dev/null 2>&1; then
-    print_warning "Existing minikube cluster detected. Deleting..."
-    minikube delete
+    read -p "A minikube cluster already exists and will be deleted. Do you want to continue? [y/N]: " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        print_message "Using existing minikube cluster."
+    else
+        print_warning "Existing minikube cluster detected. Deleting..."
+        minikube delete
+        print_message "Starting minikube cluster with 3 nodes and Calico CNI..."
+        minikube start --driver=podman --nodes=3 --cni=calico
+    fi
 fi
 
-# Run the deployment commands
-print_message "Starting minikube cluster with 3 nodes and Calico CNI..."
-minikube start --driver=podman --nodes=3 --cni=calico
 
 print_message "Waiting for cluster to be ready..."
 sleep 30
 
-print_message "Initializing Go module..."
-make setup 2>/dev/null || print_warning "Go module already initialized"
-
-print_message "Building Go application..."
-make build
-
 print_message "Building container image..."
 make image
+
+sleep 10
 
 print_message "Deploying to Kubernetes..."
 make deploy
 
-print_message "Waiting for pod to start..."
-sleep 15
+sleep 20
 
 print_message "Following pod logs..."
 kubectl logs startup-script -f

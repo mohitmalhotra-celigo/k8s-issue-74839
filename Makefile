@@ -7,7 +7,7 @@ build:
 	CGO_ENABLED=0 GOOS=linux go build
 
 image:
-	podman build . -t mohit/k8s-issue-74839:latest
+	podman build . -t k8s-issue-74839:latest
 
 deploy:
 	kubectl apply -f deploy.yaml
@@ -15,4 +15,4 @@ deploy:
 clean:
 	rm -f k8s-issue-74839
 	kubectl delete -f deploy.yaml
-	podman rmi mohit/k8s-issue-74839:latest
+	podman rmi k8s-issue-74839:latest
