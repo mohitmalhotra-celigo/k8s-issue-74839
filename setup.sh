@@ -227,6 +227,9 @@ sleep 30
 print_message "Building container image..."
 make image
 
+# fix to load image at all nodes
+print_message "Make image available at all nodes..."
+podman save k8s-issue-74839:latest | minikube image load --profile=minikube -
 sleep 10
 
 print_message "Deploying to Kubernetes..."

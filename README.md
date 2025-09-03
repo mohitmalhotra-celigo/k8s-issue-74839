@@ -5,7 +5,7 @@
 1. Create a cluster with at least 2 nodes.
 1. Deploy the app.
 ```console
-kubectl create -f deploy.yaml
+kubectl apply -f deploy.yaml
 ```
 
 1. Check if the server crashed

@@ -30,6 +30,7 @@ spec:
         image: k8s-issue-74839:latest
         ports:
         - containerPort: 9000
+        imagePullPolicy: IfNotPresent
 ---
 kind: Service
 apiVersion: v1
